@@ -102,6 +102,7 @@ function CardBook(){
         e.preventDefault();
         library.pop(this.book);
         console.log(library)
+        bookCard.remove()
     })
 
     // other details regarding book

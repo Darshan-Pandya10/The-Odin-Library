@@ -94,7 +94,11 @@ body{
     margin: 10rem 3rem 5rem 3rem;
     width: 90rem;
     height: auto;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .bookCard{
@@ -106,6 +110,7 @@ body{
     font-family: 'Barlow', sans-serif;
     display: flex;
     flex-direction: column;
+    margin: 1rem;
 }
 
 .cardHeader{
