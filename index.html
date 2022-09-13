@@ -24,19 +24,15 @@
     </header>
     <button class="addNewBook">Add New Book</button>
 
-<div class="formdiv">
-
-
         <form>
-            <input class="bookname" type="text" placeholder="Enter Book Name">
-            <input class="authorname" type="text" placeholder="Enter Author Name">
-            <textarea class="Description" placeholder="Enter Book Description"></textarea> 
-            <input class="pages" type="text" placeholder="Enter Book pages">
-            <input class="bookedition" type="text" placeholder="Enter Book edition">
+            <input class="bookname" type="text" placeholder="Enter Book Name" required>
+            <input class="authorname" type="text" placeholder="Enter Author Name" required>
+            <textarea class="Description" placeholder="Enter Book Description" maxlength="30"></textarea required> 
+            <input class="pages" type="text" placeholder="Enter Book pages" required>
+            <input class="bookedition" type="text" placeholder="Enter Book edition" required>
             <button type="submit" class="add">ADD</button>
             <img class="cross" src="./Resources/Images/file-excel-box-outline.svg" alt="">
         </form>
-        </div>
 
     <div class="library">
     </div>
