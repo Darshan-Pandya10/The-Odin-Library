@@ -53,7 +53,16 @@ add.addEventListener('click',(e) => {
     form.classList.remove('formshow');
     addNewBook.disabled = false;
 
-        
+     // to fetch data from library array and display into book card.
+
+     CardBook()
+
+
+   
+})
+
+function CardBook(){
+    
     let bookCard = document.createElement('div');
     bookCard.classList.add('bookCard');
     libraryDiv.appendChild(bookCard);
@@ -63,16 +72,37 @@ add.addEventListener('click',(e) => {
     cardHeader.classList.add('cardHeader');
     bookCard.appendChild(cardHeader);
 
+    let cardHeaderLeft = document.createElement('div');
+    cardHeaderLeft.classList.add('cardHeaderLeft');
+    cardHeader.appendChild(cardHeaderLeft);
+
     let bookTitle = document.createElement('p');
     bookTitle.classList.add('bookTitle');
-    cardHeader.appendChild(bookTitle);
+    cardHeaderLeft.appendChild(bookTitle);
     bookTitle.innerText = `Name : ${bookName.value}`
 
     let author = document.createElement('p');
     author.classList.add('author');
-    cardHeader.appendChild(author); 
+    cardHeaderLeft.appendChild(author); 
     author.innerText = `Author : ${authorName.value}`
 
+    let cardHeaderRight = document.createElement('div');
+    cardHeaderRight.classList.add('cardHeaderRight');
+    cardHeader.appendChild(cardHeaderRight);
+
+    let Delete = document.createElement('img')
+    Delete.classList.add('delete')
+    Delete.setAttribute('src','./Resources/Images/delete-variant.svg')
+    Delete.setAttribute('alt', 'nature');
+    Delete.setAttribute('height', 30);
+    Delete.setAttribute('width', 30);
+    cardHeaderRight.appendChild(Delete);
+
+    Delete.addEventListener('click', (e) => {
+        e.preventDefault();
+        library.pop(this.book);
+        console.log(library)
+    })
 
     // other details regarding book
 
@@ -101,6 +131,6 @@ add.addEventListener('click',(e) => {
     otherDetails.appendChild(editionOfBook); 
     editionOfBook.innerText = `Edition : ${bookEdition.value}`
 
-})
 
-// to fetch data from library array and display into book card.
+}
+

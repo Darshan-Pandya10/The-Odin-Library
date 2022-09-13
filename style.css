@@ -91,8 +91,8 @@ body{
 /* classes for book card */
 
 .library{
-    margin: 10rem 2rem 5rem 2rem;
-    width: 80rem;
+    margin: 10rem 3rem 5rem 3rem;
+    width: 90rem;
     height: auto;
     border: 1px solid black;
 }
@@ -110,7 +110,16 @@ body{
 
 .cardHeader{
     height: 5rem;
-    width: 28rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.cardHeaderLeft{
+    height: 5rem;
+    width: 25rem;
     background-color: #F1F3F8;
     color: #232931;
     font-size: 16px;
@@ -120,6 +129,23 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    word-wrap: break-word;
+}
+
+.cardHeaderRight{
+    height: 5rem;
+    width: 3rem;
+    background-color: #F1F3F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.5rem;
+}
+
+.delete{
+    cursor: pointer;
+
 }
 
 .otherDetails{
@@ -140,7 +166,7 @@ body{
     width: 27rem;
     height: 8rem;
     /* border: 1px solid lavender; */
-    /* padding: 0.5rem; */
+    overflow: auto;
 }
 
 
