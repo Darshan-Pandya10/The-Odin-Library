@@ -31,14 +31,15 @@ addNewBook.addEventListener('click' , (e) => {
     form.classList.add('formshow');
     console.log('button clicked');
     addNewBook.disabled = true;
+    addNewBook.classList.add('showcross')
 })
 
 cross.addEventListener('click',() => {
     form.classList.remove('formshow');
     addNewBook.disabled = false;
+    addNewBook.classList.remove('showcross')
 
 })
-
 // form pop-up end
 
 // creating new object & adding to the library
@@ -48,10 +49,11 @@ add.addEventListener('click',(e) => {
     e.preventDefault()
     let book = new Book(bookName.value,authorName.value,description.value,pages.value,bookEdition.value)
     library.push(book);
-    console.log(book);
     console.log(library);
     form.classList.remove('formshow');
     addNewBook.disabled = false;
+    addNewBook.classList.remove('showcross')
+
 
      // to fetch data from library array and display into book card.
 
@@ -62,11 +64,10 @@ add.addEventListener('click',(e) => {
 })
 
 function CardBook(){
-    
+
     let bookCard = document.createElement('div');
     bookCard.classList.add('bookCard');
     libraryDiv.appendChild(bookCard);
-
 
     let cardHeader = document.createElement('div');
     cardHeader.classList.add('cardHeader');
@@ -80,6 +81,7 @@ function CardBook(){
     bookTitle.classList.add('bookTitle');
     cardHeaderLeft.appendChild(bookTitle);
     bookTitle.innerText = `Name : ${bookName.value}`
+
 
     let author = document.createElement('p');
     author.classList.add('author');
@@ -98,6 +100,7 @@ function CardBook(){
     Delete.setAttribute('width', 30);
     cardHeaderRight.appendChild(Delete);
 
+
     Delete.addEventListener('click', (e) => {
         e.preventDefault();
         library.pop(this.book);
@@ -115,6 +118,7 @@ function CardBook(){
     descriptionBox.classList.add('descriptionBox');
     otherDetails.appendChild(descriptionBox);
 
+    
     let descriptionText = document.createElement('p');
     descriptionText.classList.add('descriptionText');
     descriptionBox.appendChild(descriptionText);
@@ -134,4 +138,3 @@ function CardBook(){
 
 
 }
-

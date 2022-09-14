@@ -88,6 +88,10 @@ body{
     cursor: pointer;
 }
 
+.showcross{
+    cursor: not-allowed;
+}
+
 /* classes for book card */
 
 .library{
@@ -96,7 +100,7 @@ body{
     height: auto;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
     align-items: center;
     justify-content: space-around;
 }
