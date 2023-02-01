@@ -29,7 +29,6 @@ function Book(bookName,authorName,description,pages,bookEdition) {
 addNewBook.addEventListener('click' , (e) => {
     e.preventDefault();
     form.classList.add('formshow');
-    console.log('button clicked');
     addNewBook.disabled = true;
     addNewBook.classList.add('showcross')
 })
@@ -44,26 +43,34 @@ cross.addEventListener('click',() => {
 
 // creating new object & adding to the library
 
+
 add.addEventListener('click',(e) => {
 
     e.preventDefault()
-    let book = new Book(bookName.value,authorName.value,description.value,pages.value,bookEdition.value)
+    let book = new Book(bookName.value,authorName.value,description.value,pages.value,bookEdition.value);
     library.push(book);
     console.log(library);
     form.classList.remove('formshow');
     addNewBook.disabled = false;
     addNewBook.classList.remove('showcross')
+    console.log(book);
+
+    let book_serialized = JSON.stringify(book);
+    localStorage.setItem('book', book_serialized);
 
 
      // to fetch data from library array and display into book card.
 
      CardBook()
 
-
-   
 })
 
+
+
 function CardBook(){
+
+    let getInfoFromLocalStorage = JSON.parse(localStorage.getItem('book'));
+
 
     let bookCard = document.createElement('div');
     bookCard.classList.add('bookCard');
@@ -80,21 +87,21 @@ function CardBook(){
     let bookTitle = document.createElement('p');
     bookTitle.classList.add('bookTitle');
     cardHeaderLeft.appendChild(bookTitle);
-    bookTitle.innerText = `Name : ${bookName.value}`
+    bookTitle.innerText = `Name : ${getInfoFromLocalStorage.name}`;
 
 
     let author = document.createElement('p');
     author.classList.add('author');
     cardHeaderLeft.appendChild(author); 
-    author.innerText = `Author : ${authorName.value}`
+    author.innerText = `Author : ${getInfoFromLocalStorage.author}`;
 
     let cardHeaderRight = document.createElement('div');
     cardHeaderRight.classList.add('cardHeaderRight');
     cardHeader.appendChild(cardHeaderRight);
 
-    let Delete = document.createElement('img')
-    Delete.classList.add('delete')
-    Delete.setAttribute('src','./Resources/Images/delete-variant.svg')
+    let Delete = document.createElement('img');
+    Delete.classList.add('delete');
+    Delete.setAttribute('src','./Resources/Images/delete-variant.svg');
     Delete.setAttribute('alt', 'nature');
     Delete.setAttribute('height', 30);
     Delete.setAttribute('width', 30);
@@ -104,9 +111,15 @@ function CardBook(){
     Delete.addEventListener('click', (e) => {
         e.preventDefault();
         library.pop(this.book);
-        console.log(library)
-        bookCard.remove()
+        console.log(library);
+        bookCard.remove();
+        localStorage.removeItem('book');
+        console.log(localStorage);
+
     })
+
+
+
 
     // other details regarding book
 
@@ -122,19 +135,25 @@ function CardBook(){
     let descriptionText = document.createElement('p');
     descriptionText.classList.add('descriptionText');
     descriptionBox.appendChild(descriptionText);
-    descriptionText.innerText = `Description : ${description.value}`
+    descriptionText.innerText = `Description : ${getInfoFromLocalStorage.description}`
  
 
     let totalPages = document.createElement('p');
     totalPages.classList.add('totalPages');
     otherDetails.appendChild(totalPages); 
-    totalPages.innerText = `Pages : ${pages.value}`
+    totalPages.innerText = `Pages : ${getInfoFromLocalStorage.pages}`
 
 
     let editionOfBook = document.createElement('p');
     editionOfBook.classList.add('editionOfBook');
     otherDetails.appendChild(editionOfBook); 
-    editionOfBook.innerText = `Edition : ${bookEdition.value}`
+    editionOfBook.innerText = `Edition : ${getInfoFromLocalStorage.edition}`
 
 
+}
+
+
+
+if(localStorage.getItem('book') !== null){
+    CardBook();
 }
